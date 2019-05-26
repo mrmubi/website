@@ -114,6 +114,18 @@ The following manifest describes a single-instance MySQL Deployment. The MySQL c
         - wordpress-deployment.yaml
       EOF
       ```
+      Following is how your final `kustomization.yaml`will look like.
+      Make sure to change YOUR_PASSWORD with your own password.
+```shell      
+secretGenerator:
+- name: mysql-pass
+  literals:
+  - password=YOUR_PASSWORD
+resources:
+  - mysql-deployment.yaml
+  - wordpress-deployment.yaml
+```
+
 
 ## Apply and Verify
 The `kustomization.yaml` contains all the resources for deploying a WordPress site and a 
